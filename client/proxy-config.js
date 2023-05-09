@@ -1,7 +1,8 @@
 module.exports = [
     {
         context: ['/**'],
-        target: 'http://localhost:8080',
-        secure: false
+        target: 'https://astute-education-production.up.railway.app',
+        secure: true,
+        changeOrigin: true
     }
 ]
