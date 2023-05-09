@@ -1,0 +1,25 @@
+<div *ngIf="characterList.length > 0; else noContent">
+
+    <mat-nav-list *ngFor="let c of characterList">
+        <a mat-list-item [routerLink]="['/characterDetails/' + c.id]">{{c.name}}</a>
+    </mat-nav-list>
+
+    <button mat-raised-button type="button" [disabled]="disablePrevious" (click)="previous()">Previous</button>
+    &nbsp;
+    <button mat-raised-button type="button" [disabled]="disableNext" (click)="next()">Next</button>
+
+</div>
+
+<ng-template #noContent>
+    <span *ngIf="notFound">
+        <span *ngIf="currentPage == 0">{{charName}} not found, please try again</span>
+        <div *ngIf="currentPage > 0">
+            <div>No more results</div>
+            <br>
+            <button mat-raised-button type="button" [disabled]="disablePrevious" (click)="previous()">Previous</button>
+            &nbsp;
+            <button mat-raised-button type="button" [disabled]="disableNext" (click)="next()">Next</button>
+        </div>
+    </span>
+</ng-template>
+

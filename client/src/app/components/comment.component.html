@@ -1,0 +1,12 @@
+<div class="box">
+    <form [formGroup]="form" (ngSubmit)="addComment()">
+        &nbsp;
+        <input type="text" formControlName="comment">
+        <br>
+        <br>
+        &nbsp;
+        <a mat-raised-button [routerLink]="['/characterDetails/' + charId]">Cancel</a>
+        &nbsp;
+        <button mat-raised-button type="submit" [disabled]="form.invalid">Post</button>
+    </form>
+</div>
