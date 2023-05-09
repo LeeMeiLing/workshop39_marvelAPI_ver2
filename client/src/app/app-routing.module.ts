@@ -10,7 +10,7 @@ const routes: Routes = [
   { path:'characterList/:charName', component:CharacterListComponent},
   { path:'characterDetails/:charId', component:CharacterDetailsComponent},
   { path:'comment', component:CommentComponent},
-  // { path:'**', redirectTo:'/', pathMatch:'full'},
+  { path:'**', redirectTo:'/', pathMatch:'full'}
   
 ];
 

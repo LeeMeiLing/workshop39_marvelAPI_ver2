@@ -1,3 +1,4 @@
+// ==== For Angular run locally , server on railway ====
 module.exports = [
     {
         context: ['/**'],
@@ -6,3 +7,12 @@ module.exports = [
         changeOrigin: true
     }
 ]
+
+// ==== For running locally ====
+// module.exports = [
+//     {
+//         context: ['/**'],
+//         target: 'http://localhost:8080',
+//         secure: false
+//     }
+// ]

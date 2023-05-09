@@ -1,10 +1,7 @@
 package sg.edu.nus.iss.workshop39_v2_server.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-
-import com.google.gson.JsonArray;
 
 import jakarta.json.Json;
 import jakarta.json.JsonArrayBuilder;

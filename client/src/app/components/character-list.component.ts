@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, catchError, lastValueFrom, map, tap} from 'rxjs';
 import { Character } from '../model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-character-list',
@@ -11,6 +12,7 @@ import { Character } from '../model';
 })
 export class CharacterListComponent implements OnInit, OnDestroy{
 
+  apiUrl = environment.apiUrl
   param$!: Subscription
   charName!: string
   characterList: Character[] = []
@@ -57,7 +59,7 @@ export class CharacterListComponent implements OnInit, OnDestroy{
     const headers = new HttpHeaders().set('Accept','application/json');
     const params = new HttpParams().set('charName',this.charName).set('limit',this.limit).set('offset',this.offset);
     return lastValueFrom(
-      this.httpClient.get<Character[]>('/api/characters', { headers, params }).pipe(
+      this.httpClient.get<Character[]>(`${this.apiUrl}/api/characters`, { headers, params }).pipe(
         tap((r: any) => this.characterList = r as Character[]),
         catchError(
           async (err) => {

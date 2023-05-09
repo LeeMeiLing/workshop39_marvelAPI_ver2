@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Comment } from '../model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-comment',
@@ -12,6 +13,7 @@ import { Comment } from '../model';
 })
 export class CommentComponent implements OnInit, OnDestroy {
 
+  apiUrl = environment.apiUrl
   queryParams$!: Subscription
   charId!: string
   form!:FormGroup
@@ -53,7 +55,7 @@ export class CommentComponent implements OnInit, OnDestroy {
     console.log('comment: ', this.form.value['comment']); // debug
 
     // DONT use payload.toString() !!!
-    this.httpClient.post<Comment>(`/api/character/${this.charId}`, payload, {headers})  
+    this.httpClient.post<Comment>(`${this.apiUrl}/api/character/${this.charId}`, payload, {headers})  
                       .subscribe({ 
                         next: (v:any) => {
                           this.returned = v as Comment;

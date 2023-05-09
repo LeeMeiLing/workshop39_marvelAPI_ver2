@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, catchError, lastValueFrom, tap } from 'rxjs';
 import { Character } from '../model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-character-details',
@@ -11,6 +12,7 @@ import { Character } from '../model';
 })
 export class CharacterDetailsComponent implements OnInit, OnDestroy{
  
+  apiUrl = environment.apiUrl
   param$!: Subscription
   charId!: string  // can be string or number, both works
   character!: Character
@@ -51,7 +53,7 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy{
 
     // return as promise
     return lastValueFrom(
-      this.httpClient.get('/api/character/' + this.charId, { headers })
+      this.httpClient.get(`${this.apiUrl}/api/character/` + this.charId, { headers })
                       .pipe( 
                         tap(v => this.character = v  as Character),
                         catchError(
